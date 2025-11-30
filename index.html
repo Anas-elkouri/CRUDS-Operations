@@ -17,11 +17,11 @@
         <div class="inputs">
             <input type="text" id="titel" placeholder="titel">
             <div class="price">
-                <input type="number" id="price" placeholder="price">
-                <input type="number" id="taxes" placeholder="taxes">
-                <input type="number" id="ads" placeholder="ads">
-                <input type="number" id="discount" placeholder="discount">
-                <small id="total">1222</small>
+                <input onkeyup="getTotal()" type="number" id="price" placeholder="price">
+                <input onkeyup="getTotal()" type="number" id="taxes" placeholder="taxes">
+                <input onkeyup="getTotal()" type="number" id="ads" placeholder="ads">
+                <input onkeyup="getTotal()" type="number" id="discount" placeholder="discount">
+                <small  id="total">1222</small>
             </div>
             <input type="number" id="count" placeholder="count">
             <input type="text" placeholder="category" id="category">
@@ -51,63 +51,15 @@
                     <th>delete</th>
                    </tr> 
 
-                   <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>iphone</td>
-                        <td>123</td>
-                        <td>233</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>phone</td>
-                        <td><button id="ubdate">Ubdate</button></td>
-                        <td><button id="delete">Delete</button></td>
-                    </tr>
-
-                     <tr>
-                        <td>1</td>
-                        <td>iphone</td>
-                        <td>123</td>
-                        <td>233</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>phone</td>
-                        <td><button id="ubdate">Ubdate</button></td>
-                        <td><button id="delete">Delete</button></td>
-                    </tr>
-
-                     <tr>
-                        <td>1</td>
-                        <td>iphone</td>
-                        <td>123</td>
-                        <td>233</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>phone</td>
-                        <td><button id="ubdate">Ubdate</button></td>
-                        <td><button id="delete">Delete</button></td>
-                    </tr>
-
-                     <tr>
-                        <td>1</td>
-                        <td>iphone</td>
-                        <td>123</td>
-                        <td>233</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>2345</td>
-                        <td>phone</td>
-                        <td><button id="ubdate">Ubdate</button></td>
-                        <td><button id="delete">Delete</button></td>
-                    </tr>
-                   </tbody>
+                   <tbody id="tbody">
+                   
+                   </tbody> 
                 </table>
             </div>
         </div>
 
     </div>
+
+    <script src="assets/scribt.js"></script>
 </body>
 </html>
