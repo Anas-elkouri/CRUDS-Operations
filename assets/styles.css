@@ -82,3 +82,7 @@ table th{
 th,td{
     padding: 5px;
 }
+
+#deletAll{
+    margin: 20px 0 ;
+}

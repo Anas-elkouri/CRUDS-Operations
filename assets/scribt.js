@@ -7,9 +7,8 @@ let total = document.getElementById('total');
 let count = document.getElementById('count');
 let category = document.getElementById('category');
 let submit = document.getElementById('submit');
-
-
-
+let mood = 'create';
+let tmp;
 // get total 
 
 function getTotal(){
@@ -48,8 +47,20 @@ submit.onclick = function(){
         count:count.value,
         category:category.value,
        }
-
-       dataPro.push(newpro);
+       if(mood == 'create'){
+       if(newpro.count > 1){
+        for(let i = 0 ; i < newpro.count; i++){
+            dataPro.push(newpro);
+        }
+       }else{
+         dataPro.push(newpro);
+       }
+    }else{
+        dataPro[tmp] = newpro; 
+        mood = 'create';
+       submit.innerHTML = 'create';
+       count.style.display = 'block';
+    }
        // save localstorage
        localStorage.setItem('product',  JSON.stringify(dataPro)  )
       cleardata()
@@ -74,6 +85,7 @@ function cleardata(){
 
 function showData()
 {
+    getTotal();
     let table = '';
 
     for (let i = 0; i < dataPro.length; i++){
@@ -87,7 +99,7 @@ function showData()
                         <td>${dataPro[i].discoount}</td>
                         <td>${dataPro[i].total}</td>
                         <td>${dataPro[i].category}</td>
-                        <td><button id="ubdate">Ubdate</button></td>
+                        <td><button  onclick="updatedata(${i})" id="ubdate">Ubdate</button></td>
                         <td><button onclick="deleteData( ${i} )" id="delete">Delete</button></td>
                     </tr>
 
@@ -97,6 +109,16 @@ function showData()
 
 
     document.getElementById('tbody').innerHTML = table;
+
+    let btn = document.getElementById('deletAll');
+
+    if(dataPro.length > 0){
+        btn.innerHTML = `
+        <button onclick="deleteAll()" >DELET ALL (${dataPro.length})</button>
+        `
+    }else{
+        btn.innerHTML = '';
+    }
 }
 showData()
 
@@ -111,12 +133,59 @@ function deleteData(i){
     showData()
 }
 
+function deleteAll(){
+    localStorage.clear()
+    dataPro.splice(0);
+    showData()
+}
 
 
 // count
+  
+
 
 // ubdate
+function updatedata(i)
+{
+    titel.value = dataPro[i].titel;
+    price.value = dataPro[i].price;
+    taxes.value = dataPro[i].taxes;
+    ads.value = dataPro[i].ads;
+    discoount.value = dataPro[i].discoount;
+    getTotal();
+    count.style.display = 'none';
+    category.value = dataPro[i].category;
+    submit.innerHTML = 'update';
+
+    mood = 'update';
+
+    tmp = i;
+    scroll({
+        top: 0,
+        behavior:'smooth',
+    })
+}
+
+
+
+ 
 // search 
+let searchMood = 'title';
+
+
+function getsearchmood(id){
+    let search = document.getElementById('search')
+    if(id == 'searchTitle'){
+        searchMood = 'title';
+        search.ariaPlaceholder = 
+    }else{
+        searchMood = 'category';
+    }
+    search.focus();
+    console.log(searchMood);
+}
+
+
 // clean data
 
 
